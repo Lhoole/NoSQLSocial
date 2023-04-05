@@ -16,14 +16,6 @@ module.exports = {
 
   getUserById(req, res) {
     User.findOne({ _id: req.params.id })
-      // .populate({
-      //   path: "thoughts",
-      //   select: "-__v",
-      // })
-      // .populate({
-      //   path: "friends",
-      //   select: "-__v",
-      // })
       .select('-__v')
       .then((userdata) =>
         !userdata

@@ -98,12 +98,12 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Remove friend from a thought
-  removeReaction(req, res) {
+  // Remove reaction from a thought
+  deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $pull: { reactions: { reactionId: req.params.reactionId } } },
-      { runValidators: true, new: true }
+      { new: true }
     )
       .then((thought) =>
         !thought
